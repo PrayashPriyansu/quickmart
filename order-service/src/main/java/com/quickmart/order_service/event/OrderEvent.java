@@ -1,0 +1,46 @@
+package com.quickmart.order_service.event;
+
+import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+@Entity
+@Table(name = "events")
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@EntityListeners(AuditingEntityListener.class)
+public class OrderEvent {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    @Column(name  = "aggregate_id", nullable = false)
+    private UUID aggregateId;
+
+    @Column(nullable = false)
+    private Integer version;
+
+    @Column(name = "event_type", nullable = false)
+    private String eventType;
+
+    @Column(columnDefinition = "JSON", nullable = false)
+    private String payload;
+
+    @CreatedDate
+    @Column(name = "created_at", updatable = false)
+    private LocalDateTime timestamp;
+
+    public OrderEvent(UUID aggregateId, Integer version, String eventType, String payload) {
+        this.aggregateId = aggregateId;
+        this.version = version;
+        this.eventType = eventType;
+        this.payload = payload;
+    }
+}
