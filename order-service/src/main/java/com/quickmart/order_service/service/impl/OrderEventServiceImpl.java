@@ -1,7 +1,7 @@
 package com.quickmart.order_service.service.impl;
 
-import com.quickmart.order_service.OrderEventType;
-import com.quickmart.order_service.dto.OrderEventRequest;
+import com.quickmart.order_service.enums.OrderEventType;
+import com.quickmart.order_service.dto.PlaceOrderRequest;
 import com.quickmart.order_service.dto.PlaceOrderResponse;
 import com.quickmart.order_service.event.OrderEvent;
 import com.quickmart.order_service.mapper.OrderEventMapper;
@@ -22,7 +22,7 @@ public class OrderEventServiceImpl implements OrderEventService {
     private final OrderEventRepository orderEventRepository;
 
     @Override
-    public PlaceOrderResponse placeOrder(OrderEventRequest request) {
+    public PlaceOrderResponse placeOrder(PlaceOrderRequest request) {
         OrderEvent orderEvent = orderEventMapper.toEntity(UUID.randomUUID(), 1, OrderEventType.ORDER_PLACED,request);
 
         OrderEvent saved = orderEventRepository.save(orderEvent);

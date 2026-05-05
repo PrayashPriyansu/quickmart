@@ -1,11 +1,11 @@
 package com.quickmart.order_service.service;
 
-import com.quickmart.order_service.dto.OrderEventRequest;
-import com.quickmart.order_service.dto.OrderEventResponse;
+import com.quickmart.order_service.dto.PlaceOrderRequest;
+import com.quickmart.order_service.dto.PlaceOrderResponse;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface OrderEventService {
 
-    OrderEventResponse placeOrder(OrderEventRequest orderEventRequest);
+    PlaceOrderResponse placeOrder(PlaceOrderRequest orderEventRequest);
 }

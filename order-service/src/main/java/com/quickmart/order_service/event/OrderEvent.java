@@ -35,7 +35,7 @@ public class OrderEvent {
 
     @CreatedDate
     @Column(name = "created_at", updatable = false)
-    private LocalDateTime timestamp;
+    private LocalDateTime createdAt;
 
     public OrderEvent(UUID aggregateId, Integer version, String eventType, String payload) {
         this.aggregateId = aggregateId;

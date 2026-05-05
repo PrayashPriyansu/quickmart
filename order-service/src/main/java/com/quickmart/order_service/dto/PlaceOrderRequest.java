@@ -1,9 +1,9 @@
-package com.quickmart.order_service;
+package com.quickmart.order_service.dto;
 
 import java.util.List;
 import java.util.UUID;
 
-public record OrderEventRequest(
+public record PlaceOrderRequest(
         String customerId,
         List<UUID> items
 ) {

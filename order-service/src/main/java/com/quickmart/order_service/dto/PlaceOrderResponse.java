@@ -2,7 +2,7 @@ package com.quickmart.order_service.dto;
 
 import java.util.UUID;
 
-public record OrderEventResponse(
+public record PlaceOrderResponse(
         UUID id,
         String status
 ) {

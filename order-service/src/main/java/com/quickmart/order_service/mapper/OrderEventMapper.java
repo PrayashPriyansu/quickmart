@@ -1,8 +1,7 @@
 package com.quickmart.order_service.mapper;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.quickmart.order_service.OrderEventType;
-import com.quickmart.order_service.dto.OrderEventRequest;
+import com.quickmart.order_service.enums.OrderEventType;
+import com.quickmart.order_service.dto.PlaceOrderRequest;
 import com.quickmart.order_service.dto.PlaceOrderResponse;
 import com.quickmart.order_service.event.OrderEvent;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +17,7 @@ public class OrderEventMapper {
 
     private final ObjectMapper objectMapper;
 
-    public OrderEvent toEntity(UUID aggregateId, Integer version, OrderEventType orderEventType, OrderEventRequest orderEventRequest) {
+    public OrderEvent toEntity(UUID aggregateId, Integer version, OrderEventType orderEventType, PlaceOrderRequest orderEventRequest) {
         String payload;
 
         try{

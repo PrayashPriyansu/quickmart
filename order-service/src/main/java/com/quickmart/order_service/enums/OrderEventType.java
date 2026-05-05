@@ -1,4 +1,4 @@
-package com.quickmart.order_service;
+package com.quickmart.order_service.enums;
 
 public enum OrderEventType {
     ORDER_PLACED,
