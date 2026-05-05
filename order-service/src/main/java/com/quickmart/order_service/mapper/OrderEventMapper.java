@@ -36,6 +36,6 @@ public class OrderEventMapper {
     }
 
     public PlaceOrderResponse toResponse(OrderEvent orderEvent) {
-        return new PlaceOrderResponse(orderEvent.getId(), orderEvent.getEventType());
+        return new PlaceOrderResponse(orderEvent.getAggregateId(), orderEvent.getEventType());
     }
 }

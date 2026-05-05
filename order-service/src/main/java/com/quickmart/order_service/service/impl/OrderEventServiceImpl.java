@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -19,7 +20,7 @@ import java.util.UUID;
 public class OrderEventServiceImpl implements OrderEventService {
 
     private final OrderEventMapper orderEventMapper;
-    private final OrderEventRepository orderEventRepository;
+    private final OrderEventRepository  orderEventRepository;
 
     @Override
     public PlaceOrderResponse placeOrder(PlaceOrderRequest request) {
@@ -27,5 +28,15 @@ public class OrderEventServiceImpl implements OrderEventService {
 
         OrderEvent saved = orderEventRepository.save(orderEvent);
         return orderEventMapper.toResponse(saved);
+    }
+
+    @Override
+    public List<PlaceOrderResponse> getOrderEvents(UUID aggregateId) {
+        List<OrderEvent> events =orderEventRepository.findByAggregateIdOrderByVersionAsc(aggregateId);
+
+        return events
+                .stream()
+                .map(orderEventMapper::toResponse)
+                .toList();
     }
 }
