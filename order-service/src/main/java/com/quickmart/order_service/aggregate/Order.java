@@ -2,13 +2,11 @@ package com.quickmart.order_service.aggregate;
 
 import com.quickmart.order_service.dto.PlaceOrderRequest;
 import com.quickmart.order_service.enums.ErrorCode;
-import com.quickmart.order_service.enums.OrderEventType;
 import com.quickmart.order_service.enums.OrderStatus;
-import com.quickmart.order_service.event.OrderEvent;
+import com.quickmart.order_service.entity.OrderEvent;
 import com.quickmart.order_service.exception.BusinessException;
 import lombok.Getter;
 
-import java.util.Map;
 import java.util.UUID;
 
 import static com.quickmart.order_service.enums.OrderEventType.*;

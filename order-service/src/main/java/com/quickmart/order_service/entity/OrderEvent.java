@@ -1,11 +1,10 @@
-package com.quickmart.order_service.event;
+package com.quickmart.order_service.entity;
 
 import com.quickmart.order_service.enums.OrderEventType;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.query.Order;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -26,7 +25,7 @@ public class OrderEvent {
     @Column(name  = "aggregate_id", nullable = false)
     private UUID aggregateId;
 
-    @Column(nullable = false)
+    @Version
     private Integer version;
 
     @Column(name = "event_type", nullable = false)

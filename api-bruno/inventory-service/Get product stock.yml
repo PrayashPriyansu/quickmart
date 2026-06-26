@@ -1,0 +1,22 @@
+info:
+  name: Get product stock
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url}}/{{path}}?skuId=550e8400-e29b-41d4-a716-446655440000&storeId=6ba7b810-9dad-11d1-80b4-00c04fd430c8"
+  params:
+    - name: skuId
+      value: 550e8400-e29b-41d4-a716-446655440000
+      type: query
+    - name: storeId
+      value: 6ba7b810-9dad-11d1-80b4-00c04fd430c8
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

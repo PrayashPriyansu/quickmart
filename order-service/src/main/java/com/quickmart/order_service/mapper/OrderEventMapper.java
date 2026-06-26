@@ -1,12 +1,10 @@
 package com.quickmart.order_service.mapper;
 
 import com.quickmart.order_service.enums.OrderEventType;
-import com.quickmart.order_service.dto.PlaceOrderRequest;
 import com.quickmart.order_service.dto.PlaceOrderResponse;
-import com.quickmart.order_service.event.OrderEvent;
+import com.quickmart.order_service.entity.OrderEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.UUID;
 
