@@ -6,7 +6,7 @@ import com.quickmart.order_service.dto.PlaceOrderResponse;
 import com.quickmart.order_service.event.OrderEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import tools.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.UUID;
 
@@ -15,24 +15,8 @@ import java.util.UUID;
 @SuppressWarnings("RedundantCatch")
 public class OrderEventMapper {
 
-    private final ObjectMapper objectMapper;
-
-    public OrderEvent toEntity(UUID aggregateId, Integer version, OrderEventType orderEventType, PlaceOrderRequest orderEventRequest) {
-        String payload;
-
-        try{
-            payload = objectMapper.writeValueAsString(orderEventRequest);
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to serialize order event payload", e);
-        }
-
-
-        return new OrderEvent(
-                aggregateId,
-                version,
-                orderEventType.name(),
-                payload
-        );
+    public OrderEvent toEntity(UUID aggregateId, Integer version, OrderEventType orderEventType, String payload) {
+        return new OrderEvent(aggregateId, version, orderEventType, payload);
     }
 
     public PlaceOrderResponse toResponse(OrderEvent orderEvent) {

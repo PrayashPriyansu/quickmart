@@ -1,0 +1,10 @@
+info:
+  name: order-service
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
+  variables:
+    - name: path
+      value: api/v1/orders

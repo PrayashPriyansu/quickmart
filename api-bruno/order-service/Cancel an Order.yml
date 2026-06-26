@@ -1,0 +1,15 @@
+info:
+  name: Cancel an Order
+  type: http
+  seq: 1
+
+http:
+  method: DELETE
+  url: "{{url}}/{{path}}/5049699e-df29-4ae8-93a9-db28814e9266"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

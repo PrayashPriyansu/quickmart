@@ -8,8 +8,9 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public interface OrderEventService {
+public interface OrderService {
 
     PlaceOrderResponse placeOrder(PlaceOrderRequest orderEventRequest);
     List<PlaceOrderResponse> getOrderEvents(UUID aggregateId);
+    PlaceOrderResponse cancelOrder(UUID orderEventId);
 }

@@ -2,8 +2,10 @@ package com.quickmart.order_service.controller;
 
 import com.quickmart.order_service.dto.PlaceOrderRequest;
 import com.quickmart.order_service.dto.PlaceOrderResponse;
-import com.quickmart.order_service.service.OrderEventService;
+import com.quickmart.order_service.service.OrderService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,26 +15,33 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/orders")
 @RequiredArgsConstructor
-public class OrderEventController {
+public class OrderController {
 
-    private final OrderEventService orderEventService;
-
+    private final OrderService orderService;
 
     @GetMapping("/{aggregateId}")
     public ResponseEntity<List<PlaceOrderResponse>> getOrderEvents(@PathVariable UUID aggregateId) {
-        return ResponseEntity.ok(orderEventService.getOrderEvents(aggregateId));
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(orderService.getOrderEvents(aggregateId));
     }
-
 
     @PostMapping()
     public ResponseEntity<PlaceOrderResponse> placeOrder(
-            @RequestBody PlaceOrderRequest request
+            @RequestBody @Valid PlaceOrderRequest request
             ){
 
-        PlaceOrderResponse placedOrder = orderEventService.placeOrder(request);
-
+        PlaceOrderResponse placedOrder = orderService.placeOrder(request);
 
         return ResponseEntity
                 .ok(placedOrder);
     }
+
+    @DeleteMapping("/{orderId}")
+    public ResponseEntity<Void> deleteOrder(@PathVariable UUID orderId) {
+
+        orderService.cancelOrder(orderId);
+        return ResponseEntity.noContent().build();
+    }
+
 }
