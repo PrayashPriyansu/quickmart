@@ -6,7 +6,7 @@ import com.quickmart.order_service.aggregate.Order;
 import com.quickmart.order_service.enums.ErrorCode;
 import com.quickmart.order_service.dto.PlaceOrderRequest;
 import com.quickmart.order_service.dto.PlaceOrderResponse;
-import com.quickmart.order_service.entity.OrderEvent;
+import com.quickmart.order_service.event.OrderEvent;
 import com.quickmart.order_service.exception.BusinessException;
 import com.quickmart.order_service.kafka.OrderEventProducer;
 import com.quickmart.order_service.mapper.OrderEventMapper;

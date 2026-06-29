@@ -1,4 +1,4 @@
-package com.quickmart.order_service.entity;
+package com.quickmart.order_service.event;
 
 import com.quickmart.order_service.enums.OrderEventType;
 import jakarta.persistence.*;

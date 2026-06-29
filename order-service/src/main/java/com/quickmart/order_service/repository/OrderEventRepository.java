@@ -1,6 +1,6 @@
 package com.quickmart.order_service.repository;
 
-import com.quickmart.order_service.entity.OrderEvent;
+import com.quickmart.order_service.event.OrderEvent;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
